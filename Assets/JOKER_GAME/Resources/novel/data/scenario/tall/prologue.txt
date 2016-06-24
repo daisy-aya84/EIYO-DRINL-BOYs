@@ -1,0 +1,60 @@
+;チュートリアル用スクリプトファイル
+
+;メッセージ表示
+[showmessage]
+
+;共通ライブラリ
+;セーブ・ロードバックログなど基本的な機能を取り込む 
+[call file=tall/system target="*system_setting_buttons"]
+
+;ゲーム作成で便利なマクロ集
+[call file=tall/libs/utils]
+[text_new name=_sp_chara_name layer=ui x="-168" y=-108.5 val="" color="DDFF00" fontsize=16 anchor="MiddleLeft"]
+[text_show name="_sp_chara_name"]
+
+;背景の新規定義
+[bg_new storage=“train”]
+
+;背景の表示
+[bg_show ]
+
+[wait time=2]
+
+はぁー、今日も疲れた[p]
+
+わたしは企業勤めのOL。[p]
+今日も誰かがやらなきゃいけない仕事を引きうけ、残業。[p]
+時間は終電ギリギリくらい。[p]
+仕事を持って帰って来ちゃった。[r]
+コンビニで何か買って帰ろ。[p]
+電車を降りた私は[l]
+何も考えずに家の近くのコンビニに向かった。[p]
+
+[bg_mod storage=“konbini”]
+
+作業しながら食べれるパンと…眠気覚ましのミント…[r]
+あと…栄養ドリンクを買っていこう[p]
+コンビニの栄養ドリンクコーナーには[r]
+私のような社畜のために[r]
+豊富な種類の栄養ドリンクが冷やされていた[p]
+さあ、今日はどれにしようかな[p]
+
+[select_new text=“リボビタンD” target=*select_a1 ]
+[select_new text=“チオピタドリンク” target=*select_a2 ]
+
+[select_show sound=click ]
+
+[s]
+
+*select_a1
+リボビタンDが押されました[p]
+@jump target=*a_common
+
+*select_a2
+チオピタドリンクが押されました[p]
+@jump target=*a_common
+
+*a_common 
+共通ルートです[p]
+
+
