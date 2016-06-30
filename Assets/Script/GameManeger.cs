@@ -5,69 +5,65 @@ using UnityEngine.UI;
 public class GameManeger : MonoBehaviour {
 
 	public Image gauge;
-	public float power;
-	public int round;
-	public float maxpower;
-
+	public static float power;
+	public static int round=1;
+	public static float maxpower;
+	public Text power_wariai;
+	public Text Round;
 
 	// Use this for initialization
 	void Start () {
-	
+
 		power = 0;
-		round = 1;
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
+		SaveData ();
+		LoadData ();
 
-		//Touch tch = Input.GetTouch(0);
+		Debug.Log ("Round" + round);
 
 		//round=1の時maxpower=20;
 		if (round == 1) {
 			maxpower = 20;
 		}
 
-		//"drink"というタグのスプライトを１秒撫でたら元気パワーが１上がる
-
-		//if(Input.touchCount == 1){
 
 
-	//}
-
-		//Touchという関数を作る
-//		Touches ();
-
-		//とりあえず１秒たったら１上がる
-		//power += 1 * Time.deltaTime;
+	}
+	
+	// Update is called once per frame
+	void Update () {
 
 		//gauge.fillAmount = (現在の元気パワー）/ (MAXの元気パワー);と書く
 		gauge.fillAmount = power / maxpower;
-		Debug.Log (power);
-	
+		//Debug.Log (power);
+
+		//(現在の元気パワー）/ (MAXの元気パワー);を表示する
+		power_wariai.text = Mathf.FloorToInt (power) + " / " + maxpower.ToString ();
+
+		Round.text = round.ToString ();
+
 	}
 
-//	void Touches(){
-//		if(Input.GetMouseButton(0)){
-//			if (Input.mousePosition == GameObject.FindWithTag ("drink").transform.position) {
-//
-//					power += 1 * Time.deltaTime;
-//
-//
-//			}
-//		}
-//
-//	
-//	}
 
-//	void OnCollisionStay2D(Collision2D coll){
-//		if (coll.gameObject.tag == "drink") {
-//			
-//			power += 1 * Time.deltaTime;
-//
-//		}
-//
-//	}
+	public static void SaveData() {
 
+
+		if (round != 1) {
+			string testDate = "TestData";
+			PlayerPrefs.SetInt (testDate, round);
+
+			Debug.Log ("data was saved" + round);
+		} else if(round == 1){
+			string testDate = "TestData";
+			PlayerPrefs.SetInt (testDate, 1);
+		}
+	}
+
+	public static void LoadData() {
+
+		string testDate = "TestData";
+		round = PlayerPrefs.GetInt (testDate);
+		Debug.Log ("data was loaded" + round);
+	}
 		
 }

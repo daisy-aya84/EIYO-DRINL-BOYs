@@ -1,3 +1,0 @@
-*select_a1 
-「チオビタドリンク」がクリックされました[p]
-@jump file=tall/prologue target=*a_common

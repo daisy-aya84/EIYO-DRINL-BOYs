@@ -3,7 +3,7 @@
 
 *title
 ;タイトル画面
-[bg_new name="background" layer="background" storage="title_tall"]
+[bg_new name="background" layer="background" storage="title1_tall"]
 [bg_show name="background"]
 
 ;開始ボタンとロードボタンを実装
